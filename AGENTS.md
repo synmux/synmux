@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Purpose
 
-This is a GitHub profile repository (daveio/daveio) - a configuration-focused meta-repository that serves as Dave Williams' portfolio hub. It contains no application code; instead, it manages:
+This is a GitHub profile repository (synmux/synmux) - a configuration-focused meta-repository that serves as Dave Williams' portfolio hub. It contains no application code; instead, it manages:
 
 - Profile documentation (README.md becomes the GitHub profile page)
 - CI/CD automation workflows
