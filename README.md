@@ -14,42 +14,43 @@ If you're after a senior DevOps engineer or something similar, get in touch thro
 
 ### 🤖 Claude Tooling
 
-| Project                               | Technologies   | Description                                                             |
-| ------------------------------------- | -------------- | ----------------------------------------------------------------------- |
-| [`claude-commit`][repo-claude-commit] | **TypeScript** | Git commit messages from Claude, using your Claude Code subscription    |
-| [`aicmd`][repo-aicmd]                 | **TypeScript** | Turn a plain-English task into a shell command, then confirm and run it |
+| Project                               | Technologies   | Description                                                              |
+| ------------------------------------- | -------------- | ------------------------------------------------------------------------ |
+| [`claude-commit`][repo-claude-commit] | **TypeScript** | Git commit messages from Claude, using your Claude Code subscription.    |
+| [`aicmd`][repo-aicmd]                 | **TypeScript** | Turn a plain-English task into a shell command, then confirm and run it. |
 
 ### 🕸️ Web
 
-| Project                                                   | Technologies                           | Description                                              |
-| --------------------------------------------------------- | -------------------------------------- | -------------------------------------------------------- |
-| [`syn.horse`][repo-syn-horse]                             | **TypeScript**, **Nuxt.js**            | Personal website                                         |
-| [`syn-horse-notifications`][repo-syn-horse-notifications] | **TypeScript**, **Cloudflare Workers** | Notification pipeline with rate limits and AI moderation |
-| [`triage`][repo-triage-syn-horse]                         | **TypeScript**, **Vue**                | iPhone-first web app for triaging Linear issues          |
-| [`genderbase`][repo-genderbase]                           | **Ruby**                               | Learn and get answers about gender issues                |
-| [`bigqueernerds.com`][repo-bigqueernerds-com]             | **TypeScript**, **Vue**                | They're big. They're queer. And they're nerds.           |
+| Project                                                   | Technologies                           | Description                                               |
+| --------------------------------------------------------- | -------------------------------------- | --------------------------------------------------------- |
+| [`syn-horse`][repo-syn-horse]                             | **TypeScript**, **Nuxt.js**            | Personal website.                                         |
+| [`syn-horse-notifications`][repo-syn-horse-notifications] | **TypeScript**, **Cloudflare Workers** | Notification pipeline with rate limits and AI moderation. |
+| [`triage`][repo-triage-syn-horse]                         | **TypeScript**, **Vue**                | iPhone-first web app for triaging Linear issues.          |
+| [`genderbase`][repo-genderbase]                           | **Ruby**                               | Learn and get answers about gender issues.                |
+| [`bigqueernerds-com`][repo-bigqueernerds-com]             | **TypeScript**, **Vue**                | They're big. They're queer. And they're nerds.            |
 
 ### 💻 CLI
 
-| Project                       | Technologies   | Description                                   |
-| ----------------------------- | -------------- | --------------------------------------------- |
-| [`belt`][repo-belt]           | **Rust**       | A CLI toolbelt, mid-rewrite                   |
-| [`rhymepass`][repo-rhymepass] | **Python**     | Memorable, rhyming passphrases                |
-| [`sweep`][repo-sweep]         | **Go**         | Remove empty directories, `.DS_Store` and all |
-| [`yt-pdlp`][repo-yt-pdlp]     | **Python**     | Parallel YouTube (and other sites) downloader |
-| [`tg`][repo-tg]               | **TypeScript** | Turn file hashes into four memorable words    |
+| Project                       | Technologies   | Description                                                                                              |
+| ----------------------------- | -------------- | -------------------------------------------------------------------------------------------------------- |
+| [`belt`][repo-belt]           | **Rust**       | A CLI toolbelt, mid-rewrite. Did nothing in Python. Now does nothing in Rust.                            |
+| [`rhymepass`][repo-rhymepass] | **Python**     | Memorable, rhyming passphrases. Imperfect; generates weak passwords if forced to use too few characters. |
+| [`sweep`][repo-sweep]         | **Go**         | Remove empty directories, `.DS_Store` and all. Uses [Jev][jev] to classify files it doesn't know.        |
+| [`yt-pdlp`][repo-yt-pdlp]     | **Python**     | Parallel YouTube (and other sites) downloader. Wrapper for [`yt-dlp`][repo-yt-dlp].                      |
+| [`tg`][repo-tg]               | **TypeScript** | Turn file hashes into four memorable words, or generate four random words.                               |
 
 ### 🐟 Configuration
 
-| Project                               | Technologies | Description            |
-| ------------------------------------- | ------------ | ---------------------- |
-| [`dotfiles-fish`][repo-dotfiles-fish] | **Fish**     | My `fish` shell config |
+| Project                               | Technologies | Description                                                       |
+| ------------------------------------- | ------------ | ----------------------------------------------------------------- |
+| [`dotfiles-fish`][repo-dotfiles-fish] | **Fish**     | My `fish` shell config. Watch out for `funcs.fish`, she's girthy. |
 
 ## ⚒️ Languages, Frameworks, Platforms, and Tools
 
 ![git,notion,github,docker,cloudflare,aws,gcp,azure,postgresql,mysql,mongodb][skillicons-row1]
 ![ruby,python,go,rust,terraform,html,css,javascript,typescript,vue,tailwind][skillicons-row2]
 
+[jev]: https://typesafe.ai
 [repo-aicmd]: https://github.com/synmux/aicmd
 [repo-belt]: https://github.com/synmux/belt
 [repo-bigqueernerds-com]: https://github.com/synmux/bigqueernerds-com
@@ -62,6 +63,7 @@ If you're after a senior DevOps engineer or something similar, get in touch thro
 [repo-syn-horse]: https://github.com/synmux/syn-horse
 [repo-tg]: https://github.com/synmux/tg
 [repo-triage-syn-horse]: https://github.com/synmux/triage-syn-horse
+[repo-yt-dlp]: https://github.com/yt-dlp/yt-dlp
 [repo-yt-pdlp]: https://github.com/synmux/yt-pdlp
 [rust]: https://github.com/rust-lang/rust
 [syn-horse]: https://syn.horse
