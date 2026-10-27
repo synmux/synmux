@@ -2,62 +2,71 @@
 
 ## 🧑🏻‍🎤 Hi, I'm `syn`
 
-### Want my social links and CV?
-
-```sh
-curl https://syn.horse | sh
-```
-
 ## 🚀 Multipurpose nerd from London, UK
 
-- 🌱 Learning **[`rust-lang/rust`][rust]**.
-- 📫 Contact details available at [syn.horse][syn-horse]
-- 🦴 Want some of my retired code? Head to **[the `boneyard` directory in `myriad`][repo-myriad-boneyard]**.
+- 📫 Contact details available at [syn.horse][syn-horse].
+- 🦀 Learning **[`rust-lang/rust`][rust]** by rewriting [`belt`][repo-belt] in it.
+- 🤖 Building a lot of small tools around Claude Code lately.
 
 ![synmux](https://komarev.com/ghpvc/?username=synmux&color=dc143c&abbreviated=true&label=Ego-boosting+Counter)
 
 ## 💼 Looking for Work
 
-If you're after a **senior DevOps engineer** or something similar, you can grab my CV from **[cv.syn.horse][cv-syn-horse]**. It includes contact details, and details of my experience.
+If you're after a **senior DevOps engineer** or something similar, get in touch through [syn.horse][syn-horse].
 
 ## 👷🏻 Active Projects
 
+### 🤖 Claude Tooling
+
+| Project                               | Technologies   | Description                                                             |
+| ------------------------------------- | -------------- | ----------------------------------------------------------------------- |
+| [`claude-commit`][repo-claude-commit] | **TypeScript** | Git commit messages from Claude, using your Claude Code subscription    |
+| [`aicmd`][repo-aicmd]                 | **TypeScript** | Turn a plain-English task into a shell command, then confirm and run it |
+
 ### 🕸️ Web
 
-| Project                         | Technologies                | Description                               |
-| ------------------------------- | --------------------------- | ----------------------------------------- |
-| [`syn.horse`][repo-syn-horse]   | **TypeScript**, **Nuxt.js** | Personal website                          |
-| [`genderbase`][repo-genderbase] | **Ruby**, **TypeScript**    | Learn and get answers about gender issues |
+| Project                                                   | Technologies                           | Description                                              |
+| --------------------------------------------------------- | -------------------------------------- | -------------------------------------------------------- |
+| [`syn.horse`][repo-syn-horse]                             | **TypeScript**, **Nuxt.js**            | Personal website                                         |
+| [`syn-horse-notifications`][repo-syn-horse-notifications] | **TypeScript**, **Cloudflare Workers** | Notification pipeline with rate limits and AI moderation |
+| [`triage`][repo-triage-syn-horse]                         | **TypeScript**, **Vue**                | iPhone-first web app for triaging Linear issues          |
+| [`genderbase`][repo-genderbase]                           | **Ruby**                               | Learn and get answers about gender issues                |
+| [`bigqueernerds.com`][repo-bigqueernerds-com]             | **TypeScript**, **Vue**                | They're big. They're queer. And they're nerds.           |
 
 ### 💻 CLI
 
-| Project                       | Technologies   | Description                            |
-| ----------------------------- | -------------- | -------------------------------------- |
-| [`bunnypmsl`][repo-bunnypmsl] | **Rust**       | Web shortcut manager                   |
-| [`lics`][repo-lics]           | **TypeScript** | Notion-backed software licence manager |
-| [`tabby`][repo-tabby]         | **Go**         | Your widget-driven new tab page        |
+| Project                       | Technologies   | Description                                   |
+| ----------------------------- | -------------- | --------------------------------------------- |
+| [`belt`][repo-belt]           | **Rust**       | A CLI toolbelt, mid-rewrite                   |
+| [`rhymepass`][repo-rhymepass] | **Python**     | Memorable, rhyming passphrases                |
+| [`sweep`][repo-sweep]         | **Go**         | Remove empty directories, `.DS_Store` and all |
+| [`yt-pdlp`][repo-yt-pdlp]     | **Python**     | Parallel YouTube (and other sites) downloader |
+| [`tg`][repo-tg]               | **TypeScript** | Turn file hashes into BIP-39 word quads       |
 
-### 📿 Project Ambio
+### 🐟 Configuration
 
-| Project                               | Technologies   | Description                          |
-| ------------------------------------- | -------------- | ------------------------------------ |
-| [`ambio-systems`][repo-ambio-systems] | **TypeScript** | Holding page for something exciting! |
-| [`ambio`][repo-ambio]                 | **C++**        | Ambio firmware                       |
+| Project                               | Technologies | Description            |
+| ------------------------------------- | ------------ | ---------------------- |
+| [`dotfiles-fish`][repo-dotfiles-fish] | **Fish**     | My `fish` shell config |
 
 ## ⚒️ Languages, Frameworks, Platforms, and Tools
 
 ![git,notion,github,docker,cloudflare,aws,gcp,azure,postgresql,mysql,mongodb][skillicons-row1]
 ![ruby,python,go,rust,terraform,html,css,javascript,typescript,vue,tailwind][skillicons-row2]
 
-[cv-syn-horse]: https://cv.syn.horse
-[repo-ambio-systems]: https://github.com/synmux/ambio-systems
-[repo-ambio]: https://github.com/synmux/ambio
-[repo-bunnypmsl]: https://gjithub.com/synmux/bunnypmsl
+[repo-aicmd]: https://github.com/synmux/aicmd
+[repo-belt]: https://github.com/synmux/belt
+[repo-bigqueernerds-com]: https://github.com/synmux/bigqueernerds-com
+[repo-claude-commit]: https://github.com/synmux/claude-commit
+[repo-dotfiles-fish]: https://github.com/synmux/dotfiles-fish
 [repo-genderbase]: https://github.com/synmux/genderbase
-[repo-lics]: https://github.com/synmux/lics
-[repo-myriad-boneyard]: https://github.com/synmux/myriad/tree/main/boneyard
+[repo-rhymepass]: https://github.com/synmux/rhymepass
+[repo-sweep]: https://github.com/synmux/sweep
+[repo-syn-horse-notifications]: https://github.com/synmux/syn-horse-notifications
 [repo-syn-horse]: https://github.com/synmux/syn-horse
-[repo-tabby]: https://github.com/synmux/tabby
+[repo-tg]: https://github.com/synmux/tg
+[repo-triage-syn-horse]: https://github.com/synmux/triage-syn-horse
+[repo-yt-pdlp]: https://github.com/synmux/yt-pdlp
 [rust]: https://github.com/rust-lang/rust
 [syn-horse]: https://syn.horse
 [skillicons-row1]: https://skillicons.dev/icons?i=git,notion,github,docker,cloudflare,aws,gcp,azure,postgresql,mysql,mongodb
