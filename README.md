@@ -2,17 +2,13 @@
 
 ## 🧑🏻‍🎤 Hi, I'm `syn`
 
-## 🚀 Multipurpose nerd from London, UK
-
-- 📫 Contact details available at [syn.horse][syn-horse].
-- 🦀 Learning **[`rust-lang/rust`][rust]** by rewriting [`belt`][repo-belt] in it.
-- 🤖 Building a lot of small tools around Claude Code lately.
+I'm a multipurpose nerd from London. Lately I've been writing a lot of small tools around Claude Code, and I'm slowly teaching myself [Rust][rust] by rewriting [`belt`][repo-belt] in it. You can find my contact details on [syn.horse][syn-horse].
 
 ![synmux](https://komarev.com/ghpvc/?username=synmux&color=dc143c&abbreviated=true&label=Ego-boosting+Counter)
 
 ## 💼 Looking for Work
 
-If you're after a **senior DevOps engineer** or something similar, get in touch through [syn.horse][syn-horse].
+If you're after a senior DevOps engineer or something similar, get in touch through [syn.horse][syn-horse].
 
 ## 👷🏻 Active Projects
 
@@ -41,7 +37,7 @@ If you're after a **senior DevOps engineer** or something similar, get in touch 
 | [`rhymepass`][repo-rhymepass] | **Python**     | Memorable, rhyming passphrases                |
 | [`sweep`][repo-sweep]         | **Go**         | Remove empty directories, `.DS_Store` and all |
 | [`yt-pdlp`][repo-yt-pdlp]     | **Python**     | Parallel YouTube (and other sites) downloader |
-| [`tg`][repo-tg]               | **TypeScript** | Turn file hashes into BIP-39 word quads       |
+| [`tg`][repo-tg]               | **TypeScript** | Turn file hashes into four memorable words    |
 
 ### 🐟 Configuration
 
