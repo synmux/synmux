@@ -14,10 +14,9 @@ If you're after a senior DevOps engineer or something similar, get in touch thro
 
 ### 🤖 Claude Tooling
 
-| Project                               | Technologies   | Description                                                              |
-| ------------------------------------- | -------------- | ------------------------------------------------------------------------ |
-| [`claude-commit`][repo-claude-commit] | **TypeScript** | Git commit messages from Claude, using your Claude Code subscription.    |
-| [`aicmd`][repo-aicmd]                 | **TypeScript** | Turn a plain-English task into a shell command, then confirm and run it. |
+| Project                               | Technologies   | Description                                                           |
+| ------------------------------------- | -------------- | --------------------------------------------------------------------- |
+| [`claude-commit`][repo-claude-commit] | **TypeScript** | Git commit messages from Claude, using your Claude Code subscription. |
 
 ### 🕸️ Web
 
@@ -51,7 +50,6 @@ If you're after a senior DevOps engineer or something similar, get in touch thro
 ![ruby,python,go,rust,terraform,html,css,javascript,typescript,vue,tailwind][skillicons-row2]
 
 [jev]: https://typesafe.ai
-[repo-aicmd]: https://github.com/synmux/aicmd
 [repo-belt]: https://github.com/synmux/belt
 [repo-bigqueernerds-com]: https://github.com/synmux/bigqueernerds-com
 [repo-claude-commit]: https://github.com/synmux/claude-commit
