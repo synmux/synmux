@@ -1,0 +1,26 @@
+name: tests
+on:
+  push:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]  # edited: a waiver added to the description reruns the docs check
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # the rubric lock needs the full history and the freeze tags
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.8"
+      - run: pip install pytest pyyaml
+      - name: tests (a rubric-change branch tests unfrozen until its freeze tag exists; rubric-change.md step 9)
+        run: |
+          v=$(python -c "import sys; sys.path.insert(0, 'jevaluate/scripts'); import rubric_text; print(rubric_text.version())")
+          if ! git rev-parse -q --verify "refs/tags/rubric-$v-frozen" > /dev/null; then export JEVALUATE_TEST_UNFROZEN=1; echo "rubric $v has no freeze tag yet: testing as a rubric-change branch"; fi
+          python -m pytest -q jevaluate/scripts jevaluate-eval jevaluate-harness scripts .github/scripts jev-sources/tests jevaluate-report/tests
+      - name: docs check (docs-map.json; see CONTRIBUTING.md)
+        if: github.event_name == 'pull_request'
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: python scripts/docs_check.py --base origin/${{ github.base_ref }} --head HEAD --body "$PR_BODY"

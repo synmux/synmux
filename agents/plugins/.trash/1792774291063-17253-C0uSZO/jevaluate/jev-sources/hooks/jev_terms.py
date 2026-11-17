@@ -1,0 +1,157 @@
+"""Shared patterns for the jev-sources hooks. The claim patterns (CLAIM, DESIGN, RELAY, WEAK, source_read)
+serve an optional reply checker that is not shipped here."""
+import re
+from datetime import datetime, timezone
+import json
+import os
+
+ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))  # this install's jev-sources folder; realpath, since hooks are often symlinked into ~/.claude/hooks
+
+# A Jev term. "choice", "score" and "state" alone are common words, so they count only in compounds.
+_JEV_CI = re.compile(r"\b(jevs?|jevaluate[\w-]*|nouls?)\b|\b(choice|score)s? (primitive|question)s?\b", re.I)
+# "typesafe" (TypeScript) and "system one" (Kahneman) are common in other senses: match the product names by case.
+_JEV_CS = re.compile(r"\b(TypeSafe|System One)\b")
+
+
+class _Jev:
+    def search(self, s):
+        return _JEV_CI.search(s) or _JEV_CS.search(s)
+
+    def finditer(self, s):
+        return sorted(list(_JEV_CI.finditer(s)) + list(_JEV_CS.finditer(s)), key=lambda m: m.start())
+
+
+JEV = _Jev()
+# Words that turn a mention into a design claim.
+CLAIM = re.compile(r"\b(must|requires?|required|incorrect|not supported|unsupported|one (call|request)|(its|their) own (call|request)|in (one|a single) (call|request)|batch(ed)? (all|every)|per (request|call|candidate|passage|pair)|can'?t|cannot|not allowed|only works|has to|needs? to)\b", re.I)
+# How Jev works, as opposed to a project or a rating: a claim needs one of these too.
+DESIGN = re.compile(r"\b(nouls?|state|requests?|calls? per|per call|questions?|options?|levels?|criteria|instructions|thresholds?|confidence|primitives?|batch\w*|tokens?|passages?|candidates?|fan.?out|pinned model|model (version|id)s?|jev-\d+\.\d+)\b", re.I)
+# A relayed subagent finding.
+RELAY = re.compile(r"\b(reviewer|gate|subagent|agent|panel)s?\b\W+(?:\w+\W+){0,3}(says|said|found|flags?|flagged|claims?|reports?|calls? it|blocked)\b", re.I)
+# Weaker Jev context, counted only beside a relayed finding ("the gate says one call per passage is wrong").
+WEAK = re.compile(r"\b(cookbooks?|primitives?|state|passages?|candidates?|one call)\b", re.I)
+# Evidence that a source was opened, checked per tool call (see source_read).
+READ_PY = re.compile(r"jev-sources/scripts/read\.py")
+SRC_PATH = re.compile(r"jev-sources(-data)?/(docs|cookbooks|patterns)/|(_plans|TypeSafe)/(docs|cookbooks|patterns)/")
+WEB = re.compile(r"docs\.typesafe\.ai")
+
+
+def source_read(name, inp):
+    """True when this tool call opened a TypeSafe source: read.py, a Read of a source file, or a web read of the docs."""
+    inp = inp or {}
+    if name == "Bash":
+        c = inp.get("command") or ""
+        return bool(READ_PY.search(c) or (WEB.search(c) and re.search(r"agent-browser|curl|defuddle", c)))
+    if name == "Read":
+        return bool(SRC_PATH.search(inp.get("file_path") or ""))
+    if name == "WebFetch":
+        return bool(WEB.search(inp.get("url") or ""))
+    return False
+
+
+def strip_code(text):
+    return re.sub(r"```.*?```|`[^`\n]*`", " ", text, flags=re.S)
+MARKER = "JEV-SOURCES:"
+BRIEF = ("JEV-SOURCES: before any finding, run "
+         f"`python3 {ROOT}/scripts/jev.py \"<the question, in your words>\" --docs-words \"<the same question in the docs' words>\"` "
+         "(it routes the question twice) and read what it prints; quote verbatim, give path#heading, label reference rule, pattern, cookbook example, "
+         "sdk reference or vendor claim; findings without this are unverified.")
+
+
+def sentences(text):
+    return [x for x in re.split(r"(?<=[.!?])\s+|\n+", text) if x.strip()]
+
+
+def same_sentence(text, a, b):
+    return any(a.search(x) and b.search(x) for x in sentences(text))
+
+
+def near(text, a, b, window=80):
+    for m in a.finditer(text):
+        lo, hi = max(0, m.start() - window), m.end() + window
+        if b.search(text[lo:hi]):
+            return True
+    return False
+
+
+def log(name, line):
+    if "session=None" in line and not os.environ.get("JEV_HOOK_LOG_TESTS"):
+        return  # test runs and hand-piped JSON carry no session id; keep them out of the retire count
+    try:
+        with open(os.path.join(os.path.expanduser(os.environ.get("JEV_HOOK_LOG_DIR") or "~/.claude/hooks"), f"{name}.log"), "a", encoding="utf-8") as f:
+            f.write(f"{datetime.now().isoformat(timespec='seconds')} {line}\n")
+    except OSError:
+        pass
+
+
+def data_dir():
+    return os.path.expanduser(os.environ.get("JEV_SOURCES_DATA") or "~/.claude/jev-sources-data")
+
+
+FIELD_CAP = 300
+
+
+def log_event(name, **fields):
+    """Append one JSON line to <data>/logs/<name>.jsonl, readable by the owner only. Text fields are cut to FIELD_CAP
+    characters. Skipped when JEV_LOG=off or there is no session id (test runs and hand-piped JSON); never raises."""
+    if os.environ.get("JEV_LOG") == "off":
+        return
+    if fields.get("session") is None and not os.environ.get("JEV_HOOK_LOG_TESTS"):
+        return
+    try:
+        os.makedirs(data_dir(), mode=0o700, exist_ok=True)  # makedirs gives the mode to the last folder only
+        d = os.path.join(data_dir(), "logs")
+        os.makedirs(d, mode=0o700, exist_ok=True)
+        os.chmod(d, 0o700)  # a folder made before this version keeps its old mode otherwise
+        fields = {k: v[:FIELD_CAP] if isinstance(v, str) else v for k, v in fields.items()}
+        rec = {"ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), **fields}
+        fd = os.open(os.path.join(d, name + ".jsonl"), os.O_WRONLY | os.O_CREAT | os.O_APPEND, 0o600)
+        os.fchmod(fd, 0o600)  # the open mode applies only when the file is created
+        with os.fdopen(fd, "a", encoding="utf-8") as f:
+            f.write(json.dumps(rec) + "\n")
+    except Exception:
+        pass
+
+
+# Talk about this skill's own tooling (route.py, the hooks, topics.json), not about how Jev works.
+TOOLING = re.compile(r"route\.py|read\.py|refresh\.sh|build_index|topics\.json|sections\.jsonl|SKILL\.md|jev-sources|"
+                     r"\b(stop|dispatch|reminder|claim)[- ]hook|\bhooks?\b.{0,40}\b(fired|held|false alarm)", re.I)
+
+
+# 2026-10-06: messages that are subagent reports or task notifications, not the user's words.
+HANDBACK = re.compile(r"^\s*(Another Claude session sent a message:\s*)?(<agent-message\b|<task-notification>|\[SYSTEM NOTIFICATION)", re.I)
+
+
+FILE_NAME = re.compile(r"\.(jq|json|jsonl|md|py|sh|txt|yml|yaml|html|log)$")
+
+
+def topic_text(text):
+    """The brief's own words: drops code spans, file paths and quoted identifiers (plan names, slugs),
+    where a Jev word names a folder or a plan rather than the task (2026-10-06: 3 refusals in one session)."""
+    t = strip_code(text)
+    # the repo's own name ("jev-mode", "jev-mode-eval", spoken "Jev mode") names a folder, not Jev. Whole words only:
+    # "Jev model" and "Jev modes" stay (2026-10-08 review: the first version erased them, so a real brief got past the
+    # dispatch check). A bare "Jev mode" meaning Jev's modes is dropped too; any other Jev word still counts.
+    t = re.sub(r"\bjev(?:-mode(?:-\w+)*|\s+mode)(?!\w)", " ", t, flags=re.I)
+    # a quoted span counts as an identifier when it is one token holding - _ or / ("plan-name", 'a/b'); the bounded,
+    # non-overlapping pattern keeps this linear (the first version backtracked: 38 s on a 200k-char unclosed quote)
+    t = re.sub(r"([\"'])([^\"'\s]{1,200})\1", lambda m: " " if re.search(r"[-_/]", m.group(2)) else m.group(0), t)
+    ws = t.split()
+    # a file name is dropped, but only that piece of a comma- or semicolon-joined word ("Jev,state.json" keeps Jev)
+    ws = [p for w in ws for p in (re.split(r"(?<=[,;])", w) if FILE_NAME.search(w.strip(".,;:()[]\"'")) else [w])]
+    drop = [is_path(w) or bool(FILE_NAME.search(w.strip(".,;:()[]\"'"))) for w in ws]
+    for i in range(1, len(ws)):   # a path with spaces splits into pieces: a slashed piece right after a path piece is one too
+        if drop[i - 1] and "/" in ws[i]:
+            drop[i] = True
+    return " ".join(w for w, d in zip(ws, drop) if not d)
+
+
+def is_path(w):
+    """A slashed token is a path piece unless it reads like a name pair: "Jev/TypeSafe" and "Jev/System" name Jev
+    (2026-10-06: dropping every slashed word let "Rate how well this repo uses Jev/TypeSafe" past the check)."""
+    if "/" not in w:
+        return False
+    w = w.strip(".,;:()[]\"'")
+    if w[:1] in "~/." or w.count("/") > 1 or re.search(r"\.\w{1,5}$", w):
+        return True
+    return any(not x or x.islower() or re.search(r"[-_\d]", x) for x in w.split("/"))

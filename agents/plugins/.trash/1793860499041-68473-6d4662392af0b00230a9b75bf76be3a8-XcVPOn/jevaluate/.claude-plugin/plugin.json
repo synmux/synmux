@@ -1,0 +1,27 @@
+{
+  "author": {
+    "name": "tiffygk",
+    "url": "https://github.com/tiffygk"
+  },
+  "description": "Rates how well a project uses Jev, with provenance for every finding. Includes the harness for rating rounds, re-rates and rubric tuning, and a report that turns a rating into fixes your coding agents work through before a pull request.",
+  "homepage": "https://github.com/tiffygk/jev-mode/tree/main/jevaluate",
+  "keywords": [
+    "jev",
+    "typesafe",
+    "system-one",
+    "evaluation",
+    "rating"
+  ],
+  "license": "PolyForm-Noncommercial-1.0.0",
+  "lspServers": {},
+  "monitors": [],
+  "name": "jevaluate",
+  "repository": "https://github.com/tiffygk/jev-mode",
+  "settings": {},
+  "skills": [
+    "./jevaluate",
+    "./jevaluate-private",
+    "./jevaluate-harness",
+    "./jevaluate-report"
+  ]
+}

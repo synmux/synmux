@@ -1,0 +1,13 @@
+{
+  "claudeai-my-uploads": {
+    "source": {
+      "source": "claudeai",
+      "marketplaceId": "marketplace_01J32N5QQ9Y43GuT64E8abFk",
+      "organizationUuid": "5af2c67d-62e8-4d6f-b1ba-fc840f052a46",
+      "scope": "account"
+    },
+    "displayName": "My Uploads",
+    "scope": "account",
+    "lastUpdated": "2026-11-16T23:22:31.554Z"
+  }
+}

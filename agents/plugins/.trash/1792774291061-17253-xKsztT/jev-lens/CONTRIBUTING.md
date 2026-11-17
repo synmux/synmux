@@ -1,0 +1,40 @@
+# Contributing
+
+Pull requests are welcome. Every change reaches `main` through a PR, and CI runs the tests and the two checks below.
+
+## Working on a branch
+
+Work on a branch in its own worktree. In a fork, first add the upstream remote:
+
+    git remote add upstream https://github.com/tiffygk/jev-mode
+    git worktree add -b <name> ../jev-mode-<name> upstream/main
+
+Contributors push to their fork and open a pull request. Before pushing, run the full test suite (`python3 -m pytest`) and the pr-contents check's own tests (`python3 -m pytest .github/scripts`). On the owner's machine, a pre-push hook (not part of the clone) refuses private terms and checks freeze tags.
+
+## Keep the docs from going stale
+
+Three rules keep this repo's docs true as it changes:
+
+1. **One place per fact.** A fact lives in one file, and other files link to it. Tables that come from data are generated, never typed: the ratings table comes from `library.py export`.
+2. **No counts or versions in prose.** "19 ratings" or "rubric 2026-09-29" in a sentence goes stale the next time the number moves. Link to the table or file that holds it instead. A quoted, dated sample is fine: it is meant to stay as written.
+3. **The root README gives one line per folder.** Each folder's README owns that folder's detail.
+
+## The docs check
+
+[`docs-map.json`](docs-map.json) lists which docs describe which code: the root README lists the skills, each skill's README describes its scripts, and so on. [`scripts/docs_check.py`](scripts/docs_check.py) runs in CI on every pull request and in the local pre-push hook. It fails a change that touches a source but none of the docs that describe it, and it flags counts or versions written into README prose. It also fails when a skill folder has no `cp -r` line in the root README's install steps. Test files never need a doc. It also enforces [`retired-names.json`](retired-names.json): once something is renamed, its old name may appear only in the files listed for it, each with a reason. A file that uses an old name in its other, intended sense goes on the list with that reason, and then passes.
+
+When a change needs no doc update, say why in the PR description or a commit message:
+
+```
+Docs checked: jevaluate/README.md unchanged because the change is internal to the check
+```
+
+When you add a script or a skill, add its rule to `docs-map.json` in the same PR.
+
+## The pr-contents check
+
+Every PR description has a `Scope:` line naming the folders and files the PR changes, such as `Scope: jev-sources/, README.md`; the PR template adds it. [`pr_contents_check.py`](.github/scripts/pr_contents_check.py) runs on every pull request and fails when any commit adds or changes a file outside that line, a plan, handoff, audit report or working note, text holding a home-folder path, or a binary that isn't an image. It also fails a workflow, other than its own, that uses the name `pr-contents`, since a job by that name could report a pass in its place. Plans and working notes stay outside the repo. To widen the scope on purpose, edit the line, and the check runs again.
+
+## The local privacy check
+
+[`private_text_check.py`](scripts/private_text_check.py) keeps text from private sources out of the repo and the search index. It refuses a run of eight or more words copied from a private source (any case or punctuation), a speaker handle of four or more characters anywhere (a handle that is also a dictionary word only as an attribution), and a named person, or a community member or a vendor employee, credited with saying something. Shorter handles and names are refused only as attributions, and the message never prints the private text or the name. The sources and names live in a JSON config on the owner's machine only, `{"sources": [paths], "names": [names]}`, found through `JEV_PRIVATE_CONFIG` or the default in the owner's `.claude` folder, and the config is never committed. With no config the check skips, unless `--require-config` makes that a failure. The owner's pre-push hook runs it on every pushed file; `jev-sources/refresh.sh` and `build_index.py` run it on saved blog posts and leave out any file it refuses.

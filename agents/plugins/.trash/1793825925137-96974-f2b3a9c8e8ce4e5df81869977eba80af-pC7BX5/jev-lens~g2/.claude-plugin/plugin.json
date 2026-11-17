@@ -1,0 +1,24 @@
+{
+  "author": {
+    "name": "tiffygk",
+    "url": "https://github.com/tiffygk"
+  },
+  "description": "Legacy: turns images into a neutral JSON state, for Jev requests that can't send TypeSafe's images header.",
+  "homepage": "https://github.com/tiffygk/jev-mode/tree/main/jev-lens",
+  "keywords": [
+    "jev",
+    "typesafe",
+    "system-one",
+    "images",
+    "vision"
+  ],
+  "license": "PolyForm-Noncommercial-1.0.0",
+  "lspServers": {},
+  "monitors": [],
+  "name": "jev-lens",
+  "repository": "https://github.com/tiffygk/jev-mode",
+  "settings": {},
+  "skills": [
+    "./jev-lens"
+  ]
+}
