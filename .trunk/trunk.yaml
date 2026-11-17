@@ -1,6 +1,6 @@
 version: 0.1
 cli:
-  version: 1.25.0
+  version: 1.29.0
 plugins:
   sources:
     - id: trunk
@@ -18,12 +18,17 @@ lint:
     - renovate
   enabled:
     - actionlint@1.7.12
-    - checkov@3.4.0
+    - checkov@3.4.5
     - git-diff-check
     - markdownlint@0.50.0
-    - prettier@3.9.10
-    - trufflehog@3.99.7
+    - prettier@3.10.1
+    - trufflehog@3.99.9
     - yamllint@1.38.0
+  ignore:
+    - paths:
+        - agents/**
+      linters:
+        - ALL
 actions:
   enabled:
     - trunk-announce

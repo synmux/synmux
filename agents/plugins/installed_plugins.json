@@ -1,0 +1,144 @@
+{
+  "version": 2,
+  "plugins": {
+    "slop-cop@slop-cop": [
+      {
+        "scope": "user",
+        "installPath": "/Users/syn/.claude/plugins/cache/slop-cop/slop-cop/0.1.75",
+        "version": "0.1.75",
+        "installedAt": "2026-09-11T17:37:47.303Z",
+        "lastUpdated": "2026-11-06T20:47:42.185Z",
+        "gitCommitSha": "59ca6bdc13b3bf206d9858ea0ed78c0222f055f4"
+      }
+    ],
+    "context-mode@context-mode": [
+      {
+        "scope": "user",
+        "installPath": "/Users/syn/.claude/plugins/cache/context-mode/context-mode/2.0.2",
+        "version": "2.0.2",
+        "installedAt": "2026-09-14T14:50:18.014Z",
+        "lastUpdated": "2026-11-04T23:35:42.266Z",
+        "gitCommitSha": "43442c15bf28aaada2c65fbf21cd23c5f2d0dd52"
+      }
+    ],
+    "warp@claude-code-warp": [
+      {
+        "scope": "user",
+        "installPath": "/Users/syn/.claude/plugins/cache/claude-code-warp/warp/2.4.0",
+        "version": "2.4.0",
+        "installedAt": "2026-10-20T15:45:06.556Z",
+        "lastUpdated": "2026-10-20T15:45:06.556Z",
+        "gitCommitSha": "53ab8d63ef74d7653002444762812d2fb5639eee"
+      }
+    ],
+    "answer-me-with-html@answer-me-with-html": [
+      {
+        "scope": "user",
+        "installPath": "/Users/syn/.claude/plugins/cache/answer-me-with-html/answer-me-with-html/0.6.1",
+        "version": "0.6.1",
+        "installedAt": "2026-10-24T19:46:12.422Z",
+        "lastUpdated": "2026-11-16T22:36:29.431Z",
+        "gitCommitSha": "9908ace6ee9254d51cb88e3b6db93738f2a90b53"
+      }
+    ],
+    "i-have-adhd@i-have-adhd": [
+      {
+        "scope": "user",
+        "installPath": "/Users/syn/.claude/plugins/cache/i-have-adhd/i-have-adhd/0.4.1",
+        "version": "0.4.1",
+        "installedAt": "2026-10-29T16:07:13.071Z",
+        "lastUpdated": "2026-10-29T16:07:13.071Z",
+        "gitCommitSha": "1ecea1993b7fce257ffbd686c070948b5e07eda6"
+      }
+    ],
+    "ponytail@ponytail": [
+      {
+        "scope": "user",
+        "installPath": "/Users/syn/.claude/plugins/cache/ponytail/ponytail/5.3.3",
+        "version": "5.3.3",
+        "installedAt": "2026-10-29T16:08:23.482Z",
+        "lastUpdated": "2026-10-29T16:08:23.482Z",
+        "gitCommitSha": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846"
+      }
+    ],
+    "terminal-browser@terminal-browser": [
+      {
+        "scope": "user",
+        "installPath": "/Users/syn/.claude/plugins/cache/terminal-browser/terminal-browser/0.0.2",
+        "version": "0.0.2",
+        "installedAt": "2026-10-29T19:26:06.646Z",
+        "lastUpdated": "2026-10-29T19:26:06.646Z",
+        "gitCommitSha": "2c175622bb7c0ff4c82bd7806a41a894c4a383b6"
+      }
+    ],
+    "core-skills@hyperframes": [
+      {
+        "scope": "user",
+        "installPath": "/Users/syn/.claude/plugins/cache/hyperframes/core-skills/0.9.13",
+        "version": "0.9.13",
+        "installedAt": "2026-10-29T19:27:38.118Z",
+        "lastUpdated": "2026-11-04T23:38:05.520Z",
+        "gitCommitSha": "fa318d9727b6c0f691939325445b5d003c762f92"
+      }
+    ],
+    "hyperframes@hyperframes": [
+      {
+        "scope": "user",
+        "installPath": "/Users/syn/.claude/plugins/cache/hyperframes/hyperframes/0.9.13",
+        "version": "0.9.13",
+        "installedAt": "2026-10-29T19:28:30.324Z",
+        "lastUpdated": "2026-11-04T23:38:15.253Z",
+        "gitCommitSha": "fa318d9727b6c0f691939325445b5d003c762f92"
+      }
+    ],
+    "reasoning-services@reasoning-services-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/syn/.claude/plugins/cache/reasoning-services-marketplace/reasoning-services/2.4.0",
+        "version": "2.4.0",
+        "installedAt": "2026-11-08T17:49:08.842Z",
+        "lastUpdated": "2026-11-08T17:49:08.842Z",
+        "gitCommitSha": "4a1bb990e834403b5049568fb12e1b0735ab4fff"
+      }
+    ],
+    "oz-harness-support@claude-code-warp": [
+      {
+        "scope": "user",
+        "installPath": "/Users/syn/.claude/plugins/cache/claude-code-warp/oz-harness-support/1.1.2",
+        "version": "1.1.2",
+        "installedAt": "2026-11-12T00:05:44.725Z",
+        "lastUpdated": "2026-11-12T00:05:44.725Z",
+        "gitCommitSha": "53ab8d63ef74d7653002444762812d2fb5639eee"
+      }
+    ],
+    "conversiontools@conversiontools-skills": [
+      {
+        "scope": "user",
+        "installPath": "/Users/syn/.claude/plugins/cache/conversiontools-skills/conversiontools/1.13.1",
+        "version": "1.13.1",
+        "installedAt": "2026-11-12T00:05:49.162Z",
+        "lastUpdated": "2026-11-12T00:05:49.162Z",
+        "gitCommitSha": "dc9db59bfdcc5c01ebb82560ae7426f64aca443d"
+      }
+    ],
+    "superpowers@superpowers-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/syn/.claude/plugins/cache/superpowers-marketplace/superpowers/7.0.2",
+        "version": "7.0.2",
+        "installedAt": "2026-11-12T18:05:30.747Z",
+        "lastUpdated": "2026-11-12T18:05:30.747Z",
+        "gitCommitSha": "22f0b463e7a5e579904dd6211a520321035526f7"
+      }
+    ],
+    "gitkraken-hooks@gitkraken": [
+      {
+        "scope": "user",
+        "installPath": "/Users/syn/.claude/plugins/cache/gitkraken/gitkraken-hooks/3.1.80-alpha.3",
+        "version": "3.1.80-alpha.3",
+        "installedAt": "2026-11-16T19:57:50.423Z",
+        "lastUpdated": "2026-11-16T19:57:50.423Z"
+      }
+    ]
+  }
+}

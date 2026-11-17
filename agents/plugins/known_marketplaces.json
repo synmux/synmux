@@ -1,0 +1,110 @@
+{
+  "conversiontools-skills": {
+    "source": {
+      "source": "github",
+      "repo": "conversiontools/agent-skills"
+    },
+    "installLocation": "/Users/syn/.claude/plugins/marketplaces/conversiontools-skills",
+    "lastUpdated": "2026-11-16T23:22:33.863Z",
+    "autoUpdate": true
+  },
+  "gitkraken": {
+    "source": {
+      "source": "directory",
+      "path": "/Users/syn/.claude/plugins/marketplaces/gitkraken"
+    },
+    "installLocation": "/Users/syn/.claude/plugins/marketplaces/gitkraken",
+    "lastUpdated": "2026-11-16T23:22:31.180Z",
+    "autoUpdate": true
+  },
+  "slop-cop": {
+    "source": {
+      "source": "github",
+      "repo": "yasyf/slop-cop"
+    },
+    "installLocation": "/Users/syn/.claude/plugins/marketplaces/slop-cop",
+    "lastUpdated": "2026-11-16T23:22:34.021Z",
+    "autoUpdate": true
+  },
+  "context-mode": {
+    "source": {
+      "source": "github",
+      "repo": "mksglu/context-mode"
+    },
+    "installLocation": "/Users/syn/.claude/plugins/marketplaces/context-mode",
+    "lastUpdated": "2026-11-04T23:37:53.225Z"
+  },
+  "claude-code-warp": {
+    "source": {
+      "source": "github",
+      "repo": "warpdotdev/claude-code-warp"
+    },
+    "installLocation": "/Users/syn/.claude/plugins/marketplaces/claude-code-warp",
+    "lastUpdated": "2026-11-04T23:38:49.231Z"
+  },
+  "hyperframes": {
+    "source": {
+      "source": "github",
+      "repo": "heygen-com/hyperframes"
+    },
+    "installLocation": "/Users/syn/.claude/plugins/marketplaces/hyperframes",
+    "lastUpdated": "2026-11-04T23:38:04.011Z"
+  },
+  "answer-me-with-html": {
+    "source": {
+      "source": "github",
+      "repo": "QingYunA/answer-me-with-html"
+    },
+    "installLocation": "/Users/syn/.claude/plugins/marketplaces/answer-me-with-html",
+    "lastUpdated": "2026-11-16T22:36:29.425Z"
+  },
+  "i-have-adhd": {
+    "source": {
+      "source": "github",
+      "repo": "ayghri/i-have-adhd"
+    },
+    "installLocation": "/Users/syn/.claude/plugins/marketplaces/i-have-adhd",
+    "lastUpdated": "2026-11-04T23:38:18.290Z"
+  },
+  "ponytail": {
+    "source": {
+      "source": "github",
+      "repo": "DietrichGebert/ponytail"
+    },
+    "installLocation": "/Users/syn/.claude/plugins/marketplaces/ponytail",
+    "lastUpdated": "2026-11-04T23:38:27.524Z"
+  },
+  "terminal-browser": {
+    "source": {
+      "source": "github",
+      "repo": "zenbu-labs/terminal-browser"
+    },
+    "installLocation": "/Users/syn/.claude/plugins/marketplaces/terminal-browser",
+    "lastUpdated": "2026-11-04T23:38:44.638Z"
+  },
+  "reasoning-services-marketplace": {
+    "source": {
+      "source": "github",
+      "repo": "reasoning-services/marketplace"
+    },
+    "installLocation": "/Users/syn/.claude/plugins/marketplaces/reasoning-services-marketplace",
+    "lastUpdated": "2026-11-08T17:48:59.182Z"
+  },
+  "captain-hook": {
+    "source": {
+      "source": "github",
+      "repo": "yasyf/captain-hook"
+    },
+    "installLocation": "/Users/syn/.claude/plugins/marketplaces/captain-hook",
+    "lastUpdated": "2026-11-16T23:22:34.123Z",
+    "autoUpdate": true
+  },
+  "superpowers-marketplace": {
+    "source": {
+      "source": "github",
+      "repo": "obra/superpowers-marketplace"
+    },
+    "installLocation": "/Users/syn/.claude/plugins/marketplaces/superpowers-marketplace",
+    "lastUpdated": "2026-11-12T18:05:20.241Z"
+  }
+}
