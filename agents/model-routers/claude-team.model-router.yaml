@@ -1,0 +1,66 @@
+version: 1
+description: Opus leads and delegates; Sonnet implements, Fable advises on architecture, Haiku does quick and bulk chores.
+routes:
+  - name: team
+    model: claude-opus-5.5
+    when: Broad or multi-step work that needs planning and coordination, including adversarial reviews or decisions that need independent perspectives from different model families.
+    examples:
+      - port this module
+      - fix it and open a PR
+      - review this branch and address the problems
+      - challenge this design from three independent perspectives
+    guidance: |
+      Lead the work and integrate and verify results. For independent tasks that
+      benefit from delegation, fan out subagents using claude-sonnet-5.5.
+      Consult a claude-fable-5.2 subagent as a senior engineer when there is
+      meaningful uncertainty or an architectural decision. Use
+      claude-haiku-5.5 subagents for simple bulk tasks. Specify the requested
+      model when launching each subagent, where the host permits it. Do not
+      create unnecessary subagents for trivial work. If a requested model or
+      delegation capability is unavailable, state the limitation rather than
+      implying it was used.
+
+      For an adversarial review or a decision where one model family's blind
+      spots could matter, convene claude-fable-5.2, gpt-6.2-astra and
+      gemini-4-carbon. Give each the same question and constraints and ask for
+      an independent judgement before sharing the others' conclusions. Then
+      give each the strongest competing arguments and ask what it disputes,
+      concedes or would test. As lead, check the decisive claims and report
+      your conclusion and any unresolved disagreement rather than taking a vote.
+
+      If image generation is required at any point as part of a larger task,
+      delegate that step to an image-capable worker with the host's
+      image-generation tool. Select MAI 2.5 if the host offers renderer
+      selection. If it does not, disclose that MAI 2.5 cannot be used and proceed.
+  - name: implement
+    model: claude-sonnet-5.5
+    when: A single well-defined implementation task with a clear scope, such as adding a function, writing tests for existing code, a contained refactor or a straightforward bug fix in one area.
+    examples:
+      - add a test for this
+      - implement this function
+      - make clippy happy
+  - name: senior-engineer
+    model: claude-fable-5.2
+    when: Architectural or design decisions and questions with real uncertainty, such as choosing between approaches, structuring a codebase, judging trade-offs or assessing whether a proposal is sound, before any code is written.
+    examples:
+      - how should I structure this?
+      - is this design a good idea?
+      - which approach is better here?
+  - name: bulk
+    model: claude-haiku-5.5
+    when: Quick lookups and simple, repetitive chores that need little reasoning, such as where something is, a one-line edit, a git command, renaming across files, or reformatting many files.
+    examples:
+      - where is this defined?
+      - rename this everywhere
+      - commit this
+  - name: image
+    model: gpt-6.2-astra
+    when: The requested deliverable is a generated or edited image, not an explanation of an attached image, an image prompt, or code for generating images.
+    examples:
+      - draw a cover illustration
+      - remove the background from this photo
+    guidance: |
+      Use the host's image-generation tool to create or edit the requested
+      image. Select MAI 2.5 if renderer selection is available. If the host
+      does not expose the renderer, say so; do not claim MAI 2.5 was used.
+      Disclose that MAI 2.5 cannot be used and proceed.
